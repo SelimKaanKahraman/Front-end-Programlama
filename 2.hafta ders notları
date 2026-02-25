@@ -1,0 +1,151 @@
+FORM1
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ders2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double a, b, c, delta, x1, x2, z;
+                a = Convert.ToDouble(textBox1.Text);
+                b = Convert.ToDouble(textBox2.Text);
+                c = Convert.ToDouble(textBox3.Text);
+                delta = b * b - 4 * a * c;
+                if (delta < 0)
+                {
+                    delta = Math.Abs(delta);
+                    z = Math.Sqrt(delta)/ (2 * a);
+                }
+                else
+                {
+                    x1 = (-b + Math.Sqrt(delta)) / (2 * a);
+                    x2 = (-b - Math.Sqrt(delta)) / (2 * a);
+                    textBox4.Text = x1.ToString();
+                    textBox5.Text = x2.ToString();
+
+                }
+            }
+            catch { MessageBox.Show("Hata Oluştu");
+            }
+        }
+
+            private void Form1_Load(object sender, EventArgs e)
+            {
+                textBox1.Text = "Birinci Katsayı";
+                textBox2.Text = "İkinci Katsayı";
+                textBox3.Text = "Üçüncü Katsayı";
+                textBox4.Text = "Birinci Kök";
+                textBox5.Text = "İkinci Kök";
+            }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 f= new Form2();
+            f.Show();
+        }
+    }
+    } 
+
+
+
+
+FORM2
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ders2
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int a, b;
+                b = 0;
+                a = Convert.ToInt32(textBox1.Text);
+                if (a < 0)
+                { label1.Text = "Textboxa pozitif sayı giriniz."; }
+
+                else { for (int i = 0; i <= a; i++)
+                    {
+                        b += i;
+                    }
+                    label1.Text = b.ToString();
+                }
+            }catch
+            {
+                label1.Text = "Textboxa tam sayı giriniz.";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int a, b ;
+                b = 1;
+                a = Convert.ToInt32(textBox1.Text);
+                if(a < 0)
+                {
+
+                    label1.Text = "Textboxa pozitif sayı girin.";
+
+                }
+               else
+                {
+                    for(int i = 1; i <= a; i++)
+                    { 
+                        b *= i;
+                    }
+                    label1.Text = b.ToString();
+                }
+            }  
+            catch
+            {
+                label1.Text = "Textboxa tam sayı giriniz";
+            }
+        }
+    }
+}
