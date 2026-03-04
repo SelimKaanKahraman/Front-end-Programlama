@@ -1,0 +1,114 @@
+BUTONA BASTIĞINDA TİMER 200 E GELİNCE PENCERE BÜYÜME ÖRNEĞİ 
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form1 : Form
+    {
+
+            int k = 0;
+    public Form1()
+        {
+            InitializeComponent();
+        }
+            
+        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            k += 1;
+            this.Text = String.Format("k={0}", k);
+            if(k>200)
+            {
+                this.Width = k;
+                this.Height = k;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled= !timer1.Enabled;
+            if(timer1.Enabled==true)
+            {
+                button1.Text = "durdur";
+            }
+            else
+            {
+                button1.Text = "çalıştır";
+            }
+        }
+    }
+}
+
+
+İKİ SAYI YAZIP ORTALAM VE TOPLAM ALMA
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp2
+{
+    public partial class Form1 : Form
+    {
+        double[] sayi=new double[1000];
+        int k = 0;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text=="")
+            {
+                MessageBox.Show("Bir sayı girmelisiniz.");
+                return;
+            }
+            sayi[k] = Convert.ToDouble(textBox1.Text);
+            listBox1.Items.Add((k+1).ToString()+"sayı = " + sayi[k].ToString());
+            k += 1;
+            textBox1.Text = "";
+            textBox1.Focus();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double toplam = 0, ort = 0;
+            for(int i = 0;i<k; i++)
+            {
+                toplam+= sayi[i];
+            }
+            ort = toplam / Convert.ToDouble(k);
+            this.Text = toplam.ToString();
+            this.Text = string.Format("toplam={0} ve ortalama={1}", toplam, ort);
+        }
+    }
+}
