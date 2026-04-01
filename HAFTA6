@@ -1,0 +1,51 @@
+HAFTA 6 İÇİN ÖDEV 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double solToplam = 0;
+            double sağToplam = 0;
+            while (true)
+            {
+                Console.Write("Yük Ağırlığını giriniz (Çıkış için 0): ");
+                double yuk =Convert.ToDouble(Console.ReadLine());
+
+                if (yuk == 0)
+                    break;
+
+                if(solToplam<=sağToplam)
+                {
+                    solToplam += yuk;
+                    Console.WriteLine("Yük SOL tarafa eklendi");
+                }
+                else
+                {
+                    sağToplam += yuk;
+                    Console.WriteLine("Yük SAĞ tarafa eklendi");
+
+                }
+            }
+            double fark = Math.Abs(solToplam - sağToplam);
+            Console.WriteLine("\n----SONUÇ-----");
+            Console.WriteLine("Sol Toplam: " + solToplam + "kg");
+            Console.WriteLine("Sağ Toplam: " + sağToplam + "kg");
+            Console.WriteLine("Fark: " + fark + "kg");
+            if (fark <= 5)
+                Console.WriteLine("araç DENGELİ");
+            else
+                Console.WriteLine("Araç DENGESİZ");
+            Console.ReadKey();
+        }
+        
+    }
+    
+}
